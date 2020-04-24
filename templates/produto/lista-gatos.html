@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+	<div class="container my-5">
+        <div class="row">
+            <div class="col-2">
+                <div class="form-group">
+                    <label for="raca" class="font-weight-bold">Raça</label>
+                    <select class="form-control form-control-sm" name="raca" id="raca" onchange="location = this.value;">
+                        <option value=""> </option>
+                        {% for raca in racas %}
+                        <option value="{{ raca.get_absolute_path }}">{{ raca.nome }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+            <div class="col-10">
+                <div class="container">
+                    <div class="row">
+                        {% for gato in gatos %}
+                            <div class="col-md-3 col-sm-6">
+                                <div class="product-grid6">
+                                    <div class="product-image6">
+                                        <a href="{{ gato.get_absolute_path }}"><img class="pic-1" src="{{ gato.imagem.url }}"></a>
+                                    </div>
+                                    <div class="product-content">
+                                        <h3 class="title"><a href="{{ gato.get_absolute_path }}">{{ gato.nome }}</a></h3>
+                                        <div class="price">$ {{ gato.preco }}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class='row' align="center" style='font-size: 14px;'>
+         <div class='col-12'>
+            {% if gatos.has_other_pages %}
+               <ul class='pagination justify-content-center' style="text-align: center; position: relative;">
+                  {% if gatos.has_previous %}
+                     <li class='page-item'><a class='page-link' href='?pagina={{ gatos.previous_page_number }}&busca_por={{ busca_por }}'>Anterior</a></li>
+                  {% else %}
+                     <li class='page-item disabled'><a class='page-link' href='#' tabindex='-1'>Anterior</a></li>
+                  {% endif %}
+                  {% for i in gatos.paginator.page_range %}
+                     {% if gatos.number == i %}
+                        <li class='page-item active'><a class='page-link' href='#'>{{ i }} </a></li>
+                     {% else %}
+                        <li class='page-item'><a class='page-link' href='?pagina={{ i }}&busca_por={{ busca_por }}'>{{ i }}</a></li>
+                     {% endif %}
+                  {% endfor %}
+                  {% if gatos.has_next %}
+                     <li class='page-item'><a class='page-link' href='?pagina={{ gatos.next_page_number }}&busca_por={{ busca_por }}'>Próxima</a></li>
+                  {% else %}
+                     <li class='page-item disabled'><a class='page-link' href='#' tabindex='-1'>Próxima</a></li>
+                  {% endif %}
+               </ul>
+            {% endif %}
+         </div>
+      </div>
+    </div>
+
+{% endblock %}

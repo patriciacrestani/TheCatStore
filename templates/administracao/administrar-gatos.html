@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+	<div class="container my-5">
+        <h2>Gatos Cadastrados no Site</h2>
+        <a href="{% url 'criargato' %}"><h5><i class="fas fa-plus"></i> Cadastrar Novo Gato</h5></a>
+        <div class="row">
+            {% for gato in gatos %}
+            <div class="col-md-3 col-sm-6">
+                <div class="product-grid6">
+                    <div class="product-image6">
+                        <a href="{{ gato.get_absolute_path }}"><img class="pic-1" src="{{ gato.imagem.url }}"></a>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="title"><a href="{{ gato.get_absolute_path }}">{{ gato.nome }}</a></h3>
+                        <div class="row">
+                            <div class="price col-8">$ {{ gato.preco }}</div>
+                            <div class="price col-2"><a href="{% url 'editagato' gato.id %}"><i class="fas fa-edit"></i></a></div>
+                            <div class="price col-2"><a href="{% url 'removegato' gato.id %}"><i class="fas fa-trash-alt"></i></a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <br>
+
+        <div class='row' style='font-size: 14px;'>
+         <div class='col-12'>
+            {% if gatos.has_other_pages %}
+               <ul class='pagination'>
+                  {% if gatos.has_previous %}
+                     <li class='page-item'><a class='page-link' href='?pagina={{ gatos.previous_page_number }}&busca_por={{ busca_por }}'>Anterior</a></li>
+                  {% else %}
+                     <li class='page-item disabled'><a class='page-link' href='#' tabindex='-1'>Anterior</a></li>
+                  {% endif %}
+                  {% for i in gatos.paginator.page_range %}
+                     {% if gatos.number == i %}
+                        <li class='page-item active'><a class='page-link' href='#'>{{ i }} </a></li>
+                     {% else %}
+                        <li class='page-item'><a class='page-link' href='?pagina={{ i }}&busca_por={{ busca_por }}'>{{ i }}</a></li>
+                     {% endif %}
+                  {% endfor %}
+                  {% if gatos.has_next %}
+                     <li class='page-item'><a class='page-link' href='?pagina={{ gatos.next_page_number }}&busca_por={{ busca_por }}'>Próxima</a></li>
+                  {% else %}
+                     <li class='page-item disabled'><a class='page-link' href='#' tabindex='-1'>Próxima</a></li>
+                  {% endif %}
+               </ul>
+            {% endif %}
+         </div>
+      </div>
+    </div>
+
+{% endblock %}

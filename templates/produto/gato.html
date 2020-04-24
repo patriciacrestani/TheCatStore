@@ -1,0 +1,115 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+	<div class="container my-5">
+        <div class="row">
+            <div class="col-lg-4 mb-3 col-md-6 col-sm-6">
+                <img src="{{ gato.imagem.url }}" style="width: 100%;">
+            </div>
+
+            <div class="col-lg-4 mb-3 col-md-6 col-sm-6">
+                <h1>{{ gato.nome }}</h1>
+                <p>{{ gato.descricao }}</p>
+            </div>
+
+            <div class="col-lg-4 mb-3 col-sm-12" align="center">
+                <h1>R$ {{ gato.preco }}</h1>
+
+                <button type="button" class="btn-dark btn-lg" data-toggle="collapse" href="#my-alert-box">
+                    <span class="glyphicon glyphicon-info-sign" aria-hidden="true">Adicionar ao Carrinho <i class="fas fa-shopping-cart"></i></span>
+                </button>
+
+                <br>
+                <br>
+
+                <div id="my-alert-box" class="alert alert-info collapse" role="alert">
+                    <button type="button" class="close" data-toggle="collapse" href="#my-alert-box">
+                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                    </button>
+                    <h4>Não compre, adote!</h4>
+                    <p>Todos os gatos aqui disponíveis são gatos pertencentes as ONGs parceiras do site.
+                    Caso tenha realmente se interessado por este gato, entre em contato com a gente: fakeemail@catstore.com</p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+   <br>
+
+    <div class="container mb-5">
+       <table class="table">
+           <thead>
+                <h5>Descrição do Animal</h5>
+           </thead>
+           <tbody>
+                <tr>
+                    <td>Nome</td>
+                    <td>{{ gato.nome }}</td>
+                </tr>
+                <tr>
+                    <td>Idade</td>
+                    <td>{{ gato.idade }} meses</td>
+                </tr>
+                <tr>
+                    <td>Tamanho</td>
+                    <td>{{ gato.tamanho }}</td>
+                </tr>
+                <tr>
+                    <td>Peso</td>
+                    <td>{{ gato.peso }} kg</td>
+                </tr>
+                <tr>
+                    <td>Raça</td>
+                    <td>{{ gato.raca }}</td>
+                </tr>
+                <tr>
+                    <td>Localização</td>
+                    <td>{{ gato.localizacao }}</td>
+
+                </tr>
+                <tr>
+                    <td>Castrado</td>
+                    <td>{{ gato.castrado }}</td>
+
+                </tr>
+                <tr>
+                    <td>Filhos</td>
+                    <td>{{ gato.filhos }}</td>
+                </tr>
+                <tr>
+                    <td>Irmãos</td>
+                    <td>{{ gato.irmaos }}</td>
+                </tr>
+                <tr>
+                    <td>FIV</td>
+                    <td>{{ gato.fiv }}</td>
+                </tr>
+                <tr>
+                    <td>FELV</td>
+                    <td>{{ gato.felv }}</td>
+                </tr>
+                <tr>
+                    <td>Doenças</td>
+                    <td>{{ gato.doencas }}</td>
+                </tr>
+                <tr>
+                    <td>Vacinado (Quadrupla/Quintupla)</td>
+                    <td>{{ gato.vacinado }}</td>
+                </tr>
+                <tr>
+                    <td>Vacinado (Raiva)</td>
+                    <td>{{ gato.raiva }}</td>
+                </tr>
+                <tr>
+                    <td>Vermifugado</td>
+                    <td>{{ gato.vermifugado }}</td>
+                </tr>
+            </tbody>
+       </table>
+    </div>
+
+{% endblock %}

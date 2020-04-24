@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+	<div class="container my-5">
+        <h2>Produtos Cadastrados no Site</h2>
+        <a href="{% url 'criarproduto' %}"><h5><i class="fas fa-plus"></i> Cadastrar Novo Produto</h5></a>
+        <div class="row">
+            {% for produto in produtos %}
+            <div class="col-md-3 col-sm-6">
+                <div class="product-grid6">
+                    <div class="product-image6">
+                        <a href="{{ produto.get_absolute_path }}"><img class="pic-1" src="{{ produto.imagem.url }}"></a>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="title"><a href="{{ produto.get_absolute_path }}">{{ produto.nome }}</a></h3>
+                        <div class="row">
+                            <div class="price col-8">$ {{ produto.preco }}</div>
+                            <div class="price col-2"><a href="{% url 'editaproduto' produto.id %}"><i class="fas fa-edit"></i></a></div>
+                            <div class="price col-2"><a href="{% url 'removeproduto' produto.id %}"><i class="fas fa-trash-alt"></i></a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <br>
+
+        <div class='row' style='font-size: 14px;'>
+         <div class='col-12'>
+            {% if produtos.has_other_pages %}
+               <ul class='pagination'>
+                  {% if produtos.has_previous %}
+                     <li class='page-item'><a class='page-link' href='?pagina={{ produtos.previous_page_number }}&busca_por={{ busca_por }}'>Anterior</a></li>
+                  {% else %}
+                     <li class='page-item disabled'><a class='page-link' href='#' tabindex='-1'>Anterior</a></li>
+                  {% endif %}
+                  {% for i in produtos.paginator.page_range %}
+                     {% if produtos.number == i %}
+                        <li class='page-item active'><a class='page-link' href='#'>{{ i }} </a></li>
+                     {% else %}
+                        <li class='page-item'><a class='page-link' href='?pagina={{ i }}&busca_por={{ busca_por }}'>{{ i }}</a></li>
+                     {% endif %}
+                  {% endfor %}
+                  {% if produtos.has_next %}
+                     <li class='page-item'><a class='page-link' href='?pagina={{ produtos.next_page_number }}&busca_por={{ busca_por }}'>Próxima</a></li>
+                  {% else %}
+                     <li class='page-item disabled'><a class='page-link' href='#' tabindex='-1'>Próxima</a></li>
+                  {% endif %}
+               </ul>
+            {% endif %}
+         </div>
+      </div>
+    </div>
+
+{% endblock %}

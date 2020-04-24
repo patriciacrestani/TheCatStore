@@ -1,0 +1,156 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+   <div class="container mt-3" id="criar-conta">
+       <h1>Criar Nova Conta</h1>
+        <div class="row">
+            <div class="col-lg-6 ml-5 mt-2 mb-5">
+                <label class="font-weight-bold mb-3">Informações Pessoais</label>
+                <div class="form-group row">
+                    <label for="nome" class="font-weight-bold col-form-label col-lg-4">Nome</label>
+                    <div class="col-lg-8">
+                        <input type="text" class="form-control" name="nome" id="nome">
+                        <div class="invalid-feedback">
+                            Este campo deve ser informado.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="sobrenome" class="font-weight-bold col-form-label col-lg-4">Sobrenome</label>
+                    <div class="col-lg-8">
+                        <input type="text" class="form-control" name="sobrenome" id="sobrenome">
+                        <div class="invalid-feedback">
+                            Este campo deve ser informado.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="cpf" class="font-weight-bold col-form-label col-lg-4">CPF</label>
+                    <div class="col-lg-8">
+                        <input type="number" class="form-control" name="cpf" id="cpf" placeholder="Somente números">
+                        <div class="invalid-feedback">
+                            Este campo deve ser informado.
+                        </div>
+                    </div>
+                </div>
+
+                 <div class="form-group row">
+                    <label class="font-weight-bold col-form-label col-lg-4">Sexo</label>
+                     <div class="col-lg-8">
+                        <div class="form-check">
+                            <input type="radio" class="form-check-input" name="sexo" id="sexo-feminino" value="Feminino">
+                            <label class="form-check-label" for="sexo-feminino">Feminino</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="radio" class="form-check-input" name="sexo" id="sexo-masculino" value="Masculino">
+                            <label class="form-check-label" for="sexo-masculino">Masculino</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="radio" class="form-check-input" name="sexo" id="sexo-outro" value="Outro">
+                            <label class="form-check-label" for="sexo-outro">Outro/Prefiro não informar</label>
+                        </div>
+                        <div id="sexo-feedback" class="invalid-feedback">
+                            Este campo deve ser informado.
+                        </div>
+                     </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="estado" class="col-lg-4 font-weight-bold col-form-label">Estado</label>
+                    <div class="col-lg-8">
+                        <select class="form-control form-control-sm" name="estado" id="estado">
+                            <option value="">Selecione um estado</option>
+                            <option value="AC">Acre</option>
+                            <option value="AL">Alagoas</option>
+                            <option value="AP">Amapá</option>
+                            <option value="AM">Amazonas</option>
+                            <option value="BA">Bahia</option>
+                            <option value="CE">Ceará</option>
+                            <option value="DF">Distrito Federal</option>
+                            <option value="ES">Espírito Santo</option>
+                            <option value="GO">Goiás</option>
+                            <option value="MA">Maranhão</option>
+                            <option value="MT">Mato Grosso</option>
+                            <option value="MS">Mato Grosso do Sul</option>
+                            <option value="MG">Minas Gerais</option>
+                            <option value="PA">Pará</option>
+                            <option value="PB">Paraíba</option>
+                            <option value="PR">Paraná</option>
+                            <option value="PE">Pernambuco</option>
+                            <option value="PI">Piauí</option>
+                            <option value="RJ">Rio de Janeiro</option>
+                            <option value="RN">Rio Grande do Norte</option>
+                            <option value="RS">Rio Grande do Sul</option>
+                            <option value="RO">Rondônia</option>
+                            <option value="RR">Roraima</option>
+                            <option value="SC">Santa Catarina</option>
+                            <option value="SP">São Paulo</option>
+                            <option value="SE">Sergipe</option>
+                            <option value="TO">Tocantins</option>
+
+                        </select>
+                        <div class="invalid-feedback">
+                            Este campo deve ser informado.
+                        </div>
+                    </div>
+                </div>
+
+                <label class="font-weight-bold mb-3">Informações da Conta</label>
+
+                <div class="form-group row">
+                    <label for="email" class="font-weight-bold col-form-label col-lg-4">E-mail</label>
+                    <div class="col-lg-8">
+                        <input type="email" class="form-control" name="email" id="email" placeholder="exemplo@email.com">
+                        <div class="invalid-feedback">
+                            Este campo deve ser informado.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="senha" class="font-weight-bold col-form-label col-lg-4">Senha</label>
+                    <div class="col-lg-8">
+                        <input type="text" class="form-control" name="senha" id="senha">
+                        <div class="invalid-feedback">
+                            Este campo deve ser informado.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="confirmar-senha" class="font-weight-bold col-form-label col-lg-4">Confirmar senha</label>
+                    <div class="col-lg-8">
+                        <input type="text" class="form-control" name="confirmar-senha" id="confirmar-senha">
+                        <div class="invalid-feedback">
+                            Senhas diferentes.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" name="notificacao" id="termos" value="Sim">
+                        <label for="termos" class="form-check-label">Concordo com os Termos de Uso da loja.</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" name="notificacao" id="notificacao" value="Sim">
+                        <label for="notificacao" class="form-check-label">Desejo receber novidades e promoções da loja por e-mail.</label>
+                    </div>
+                    <div id="notificacoes-feedback" class="invalid-feedback">
+                            Este campo deve ser informado.
+                    </div>
+                </div>
+
+                <div align="center">
+                    <button type="submit" class="btn btn-dark float-center" id="btn-cadastro">Criar Conta</button>
+                </div>
+            </div>
+        </div>
+   </div>
+
+{% endblock %}

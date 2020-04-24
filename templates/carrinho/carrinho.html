@@ -1,0 +1,112 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+   <div class="container my-5">
+       {% if subtotal %}
+        <span id="subtotal" >{{ subtotal }}</span>
+       {% endif %}
+       <h5>Meu Carrinho</h5>
+       <table class="table">
+           <thead>
+               <tr>
+                   <th scope="col">Produto</th>
+                   <th scope="col">Nome</th>
+                   <th scope="col">Quantidade</th>
+                   <th scope="col">Preço</th>
+                   <th scope="col">Subtotal</th>
+                   <th scope="col"></th>
+               </tr>
+           </thead>
+           <tbody>
+           {% for c, f, s in listas %}
+           <tr>
+               <td><img src="{{ c.produto.imagem.url }}" height="100" width="100"></td>
+               <td>{{ c.produto.nome }}</td>
+               <td>
+                   <form action="{% url 'atualiza-produto' %}" method='post' novalidate>
+                       {% csrf_token %}
+                       {{ f.quantidade }}
+                   </form>
+               </td>
+               <td>R$ {{ c.preco }}</td>
+               <td>R$ {{ s }}</td>
+               <td>
+                   <form action="{% url 'remove-carrinho' %}" method='post' novalidate>
+                       {% csrf_token %}
+                       <button type='button' class='btn btn-sm btn-dark remover'>
+                           <i class="fas fa-trash-alt"></i>
+                       </button>
+                   </form>
+               </td>
+           </tr>
+           {% endfor %}
+           </tbody>
+       </table>
+
+       <div align="right" class="container mb-5">
+           <h4>Total: R$ <span id="total">{{ total }}</span></h4>
+           <br>
+           <button id="showToast" class="btn btn-dark btn-lg w-25 mx-auto">Finalizar Compra</button>
+       </div>
+   </div>
+
+<div class="toast" id="toast" role="alert" aria-live="assertive" aria-hidden="true" aria-atomic="true" data-delay="2000" style="position: fixed; top: 1rem; right: 1rem;">
+       <div class="toast-header">
+            <strong class="mr-auto">Atenção</strong>
+            <small>Agora</small>
+            <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="toast-body">
+            Não foi possível realizar sua solicitação. Tente novamente mais tarde.
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block domready %}
+    let lista_de_ids = {{ lista_de_ids }}
+    let subtotal = {{ s }}
+    $("tbody").on("click", "button.remover", function() {
+        let form = $(this).parent()
+        let td   = $(form).parent()
+        let tr   = $(td).parent()
+        let ind  = $(tr).index()
+        let id   = lista_de_ids[ind]
+        $(form).append(`<input type='hidden' name='produto_id' value=${id}>`)
+        let url = $(form).attr('action')
+        let formData = $(form).serializeArray()
+        $.post(url, formData, function(resposta) {
+            $(tr).fadeTo('slow', 0.3, function() {
+                $(this).remove()
+                lista_de_ids.splice(ind, 1)
+                $("#total").text($(resposta).find("#total").text())
+            })
+        })
+
+    })
+
+    $("tbody").on("blur", "input.quantidade", function() {
+        let form = $(this).parent()
+        let td   = $(form).parent()
+        let tr   = $(td).parent()
+        let ind  = $(tr).index()
+        let id   = lista_de_ids[ind]
+        let cansei = $(tr).children().eq(4)
+        $(form).append(`<input type='hidden' name='produto_id' value=${id}>`)
+        let url = $(form).attr('action')
+        let formData = $(form).serializeArray()
+        $.post(url, formData, function(resposta) {
+            $("#total").text($(resposta).find("#total").text())
+            $(cansei).text("R$" + $(resposta).find("#subtotal").text())
+        })
+    })
+
+    $("#showToast").click(function() {
+        $("#toast").toast('show');
+    });
+{% endblock %}

@@ -1,0 +1,107 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+	<div class="container my-5">
+        <div class="row">
+            <div class="col-lg-4 mb-3 col-md-6 col-sm-6">
+                <img src="{{ produto.imagem.url }}" style="width: 100%;">
+            </div>
+
+            <div class="col-lg-4 mb-3 col-md-6 col-sm-6">
+                <h1>{{ produto.nome }}</h1>
+                <p>{{ produto.descricao }}</p>
+            </div>
+
+            <div class="col-lg-4 mb-3 col-sm-12" align="center">
+                <h1>R$ {{ produto.preco }}</h1>
+
+                {% if produto.quantidade > 0 %}
+
+                <form id="form_compra_produto" action="{% url 'add-carrinho' %}" method="post" novalidate>
+                    {% csrf_token %}
+                    <button id="botao_comprar" type="button" class="btn-dark btn-lg">Adicionar ao Carrinho</button>
+                </form>
+
+                {% else %}
+
+                <div class="alert alert-dark" role="alert">
+                    Produto Indisponível
+                </div>
+
+                {% endif %}
+
+                <br>
+                <br>
+
+                <div class="text-center mb-4">
+                    <span id="like" data-like="500" data-liked="no"></span>
+                    <a href="#" style="text-decoration: none;" class="like-dislike"><i id="like-icon" class="far fa-thumbs-up"></i></a>
+                    <a href="#" style="text-decoration: none" class="ml-2 like-dislike"><i id="dislike-icon" class="far fa-thumbs-down"></i></a>
+                    <span id="dislike" data-dislike="0" data-disliked="no"></span>
+                </div>
+
+                <br>
+
+            </div>
+        </div>
+    </div>
+
+   <br>
+
+    <div class="container mb-5">
+       <table class="table">
+           <thead>
+                <h5>Descrição do Produto</h5>
+           </thead>
+           <tbody>
+                <tr>
+                    <td>Nome</td>
+                    <td>{{ produto.nome }}</td>
+                </tr>
+                <tr>
+                    <td>Categoria</td>
+                    <td>{{ produto.categoria }}</td>
+                </tr>
+                <tr>
+                    <td>Marca</td>
+                    <td>{{ produto.marca }}</td>
+                </tr>
+                <tr>
+                    <td>Fabricante</td>
+                    <td>{{ produto.fabricante }}</td>
+                </tr>
+                <tr>
+                    <td>Dimensões</td>
+                    <td>{{ produto.dimensoes }}</td>
+                </tr>
+                <tr>
+                    <td>Peso</td>
+                    <td>{{ produto.peso }}kg</td>
+                </tr>
+                <tr>
+                    <td>Garantia</td>
+                    <td>{{ produto.garantia }}</td>
+                </tr>
+                <tr>
+                    <td>Cor</td>
+                    <td>{{ produto.cor }}</td>
+                </tr>
+                <tr>
+                    <td>Material</td>
+                    <td>{{ produto.material }}</td>
+                </tr>
+            </tbody>
+       </table>
+    </div>
+
+{% endblock %}
+
+{% block domready %}
+ $("#botao_comprar").click(function() {
+    $("#form_compra_produto").append('{{ form_compra_produto.produto_id }}')
+    $("#form_compra_produto").submit()
+ })
+{% endblock %}

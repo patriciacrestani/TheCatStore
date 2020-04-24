@@ -1,0 +1,170 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+	<div class="container mt-3">
+        <h1>Quem somos?</h1>
+        <p>Nós da The Cat Store temos como objetivo espalhar carinho por nossos amigos felinos. Nossa missão é mostrar a beleza da adoção, disponibilizando fácil acesso para contato com diferentes ONGs que protegem os animais e ajudam no controle dos mesmos: os pegando das ruas, vacinando e castrando para evitar que hajam mais animais sem donos. Com este projeto esperamos conscientizar as pessoas sobre os direitos dos animais como indivíduos não descartáveis.</p>
+        <p>The Cat Store é uma fundação sem fins lucrativos. Os produtos vendidos têm seu dinheiro destinados as nossas ONGs parceiras e a reposição do estoque.</p>
+        <p>Não apoiamos a compra e venda de animais de forma irregular. Tenha consciência ao escolher um canil/gatil para garantir a qualidade de vida de seus animais. Procure por lugares legalizados e que tomem o devido cuidado com seus animais.</p>
+        <p>O artigo 32 da Lei 9.605/98 determina detenção de três meses a 1 ano e multa a quem praticar ato de abuso, maus-tratos, ferir ou mutilar animais silvestres, domésticos ou domesticados, nativos ou exóticos ou realizar experiência dolorosa ou cruel em animal vivo e a punição é aumentada de um sexto a um terço se ocorrer morte do animal.</p>
+        <p>Tenha consciência na hora da adoção. Um animal será um novo membro da família que precisará de cuidados especiais. Tenha certeza de que você terá: espaço suficiente para receber o animal; dinheiro para mantê-lo saudável; paciência; e tempo para desfrutar de seu novo amigo. </p>
+        <p>©Patrícia Martins Rocca Crestani</p>
+    </div>
+
+   <div class="background-black">
+       <br>
+       <div class="container" id="nossos-parceiros">
+           <h3 style="color: white;">Nossos Parceiros</h3>
+            <div class="row">
+                <div class="col-4">
+                    <div class="list-group" id="list-tab" role="tablist">
+                        <a class="list-group-item list-group-item-action active" id="gatos-tijolinho" data-toggle="list" href="#content-tijolinho" role="tab" aria-controls="tijolinho">Gatos do Tijolinho</a>
+                        <a class="list-group-item list-group-item-action" id="amor-aos-animais" data-toggle="list" href="#content-animais" role="tab" aria-controls="animais">Projeto Amor aos Animais da Comunidade</a>
+                        <a class="list-group-item list-group-item-action" id="casa-cao-gato" data-toggle="list" href="#content-casa" role="tab" aria-controls="casa">Associação Casa do Cão e Gato</a>
+                        <a class="list-group-item list-group-item-action" id="resgate-animais" data-toggle="list" href="#content-resgate" role="tab" aria-controls="resgate">Projeto Resgate de Animais</a>
+                    </div>
+                </div>
+
+                <div class="col-8">
+                    <div class="tab-content" id="nav-tabContent">
+                        <div class="tab-pane fade show active" id="content-tijolinho" role="tabpanel" aria-labelledby="gatos-tijolinho">
+                            <div class="row">
+                                <div class="col-8">
+                                    <h6 style="color: white;">O Gatos de Francisca ou Gatos do Tijolinho é um grupo de apoio a gatos abandonados. Buscamos tratar, castrar e conseguir adoções para os gatinhos.</h6>
+                                    <a style="color: white;" href="https://www.facebook.com/pg/gatosdefrancisca/"><i class="fab fa-facebook-square"></i> Facebook</a>
+                                    <h6 style="color: white;"><i class="fas fa-envelope"></i> tijolinhogatos@gmail.com</h6>
+                                </div>
+                                <div class="col-4">
+                                    <img src="{% static 'images/parceiros/tijolinho.jpg' %}" style="width: 150px; border-radius: 50%;">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tab-pane fade" id="content-animais" role="tabpanel" aria-labelledby="amor-aos-animais">
+                            <div class="row">
+                                <div class="col-8">
+                                    <h6 style="color: white;">O Projeto Amos aos Animais da Comunidade é liderado pelo protetor Joelson Torres, ativista e vegetariano e formado por protetores e ativistas (vegetarianos e veganos) e por voluntários.</h6>
+                                    <h6 style="color: white;">Nossa missão é viabilizar excelentes lares para animais que foram abandonados em situação hostil e conscientizar as pessoas sobre os direitos dos animais como indivíduos e essa luta não se cessará até que todos os seres vivos tenham sua dignidade respeitada tendo o direito de viver livre de maus tratos e de sofrimentos.</h6>
+                                    <a style="color: white;" href="https://www.facebook.com/pg/animaisdascomunidades"><i class="fab fa-facebook-square"></i> Facebook</a>
+                                </div>
+                                <div class="col-4">
+                                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3674.3331578067005!2d-43.180139985921095!3d-22.937954384995916!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x997f89103f0123%3A0x75021068ffdec53e!2sR.%20Marqu%C3%AAs%20de%20Abrantes%2C%20142%20-%20Flamengo%2C%20Rio%20de%20Janeiro%20-%20RJ%2C%2022230-061!5e0!3m2!1spt-BR!2sbr!4v1568667778885!5m2!1spt-BR!2sbr" width="250" height="250" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tab-pane fade" id="content-casa" role="tabpanel" aria-labelledby="casa-cao-gato">
+                            <div class="row">
+                                <div class="col-8">
+                                    <h6 style="color: white;">A ACCG é um abrigo de animais, localizado em Niteroi, há 20anos. Temos aprox. 300 animais, dentre cães, gatos e um cavalinho. Diretoria: Barbara - Fundadora, Rosimar - Presidente. Voluntários: Daniel, Jaqueline, Luciana Aquino ; Voluntárias do Pelo Animal Carol, Gabi, Jú e Naty.</h6>
+                                    <h6 style="color: white;">Somos uma associação de amigos! Lutamos há 20 anos! Temos cerca de 300 peludos e muitas dívidas. Mande-nos uma mensagem e conheça nosso trabalho!</h6>
+                                    <h6><a style="color: white;" href="https://www.facebook.com/pg/AssociacaoCasaDoCaoEGatoAccg/"><i class="fab fa-facebook-square"></i> Facebook</a></h6>
+                                    <h6><a style="color: white;" href="https://www.facebook.com/pg/PeloAnimalRJ/"><i class="fab fa-facebook-square"></i> Facebook - Pelo Animal RJ</a></h6>
+                                </div>
+                                <div class="col-4">
+                                    <img src="{% static 'images/parceiros/ACCG.jpg' %}" style="width: 150px; border-radius: 50%;">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tab-pane fade" id="content-resgate" role="tabpanel" aria-labelledby="resgate-animais">
+                            <div class="row">
+                                <div class="col-8">
+                                    <h6 style="color: white;">O Projeto Resgate de Animais é a união de pessoas que decidiram agir em prol dos animais. Promovemos eventos de adoção para animais carentes e desenvolvemos esterilização para animais de rua sem perfil de adoção, retornando-os para suas colônias.</h6>
+                                    <h6><a style="color: white;" href="https://www.facebook.com/pg/projetoresgatedeanimais/"><i class="fab fa-facebook-square"></i> Facebook</a></h6>
+                                    <h6 style="color: white;"><a href="https://www.resgatedeanimais.com.br/projetoresgatedeanimais.php"></a><i class="fab fa-internet-explorer"></i> Site</h6>
+                                </div>
+                                <div class="col-4">
+                                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3673.996103018588!2d-43.1867244359209!3d-22.950370634989675!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x997fefd8b8cc5f%3A0xb47984141babae4f!2sPra%C3%A7a%20Nelson%20Mandela%20-%20Botafogo%2C%20Rio%20de%20Janeiro%20-%20RJ!5e0!3m2!1spt-BR!2sbr!4v1568668834843!5m2!1spt-BR!2sbr" width="250" height="250" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+       </div>
+       <br>
+   </div>
+
+
+   <div class="container my-5" id="fale-conosco">
+        <div class="row">
+            <div class="col-lg-6 mr-auto ml-auto">
+                <h3 class="mb-3">Fale Conosco</h3>
+                <div class="form-group row">
+                    <label for="nome" class="font-weight-bold col-form-label col-lg-2">Nome</label>
+                    <div class="col-lg-10">
+                        <input type="text" class="form-control" name="nome" id="nome" placeholder="Digite aqui seu nome">
+                        <div class="invalid-feedback">
+                            Este campo deve ser informado.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="email" class="font-weight-bold col-form-label col-lg-2">E-mail</label>
+                    <div class="col-lg-10">
+                        <input type="email" class="form-control" name="email" id="email" placeholder="exemplo@email.com">
+                        <div class="invalid-feedback">
+                            Este campo deve ser informado.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="assunto" class="col-lg-2 font-weight-bold col-form-label">Assunto</label>
+                    <div class="col-lg-10">
+                        <select class="form-control form-control-sm" name="assunto" id="assunto">
+                            <option value="">Selecione um assunto</option>
+                            <option value="1">Sugestão</option>
+                            <option value="2">Reclamação</option>
+                            <option value="3">Elogios</option>
+                            <option value="4">Outro</option>
+                        </select>
+                        <div class="invalid-feedback">
+                            Este campo deve ser informado.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="mensagem" class="font-weight-bold col-form-label col-lg-2">Mensagem</label>
+                    <div class="col-lg-10">
+                        <textarea class="form-control" rows="12" required name="mensagem" id="mensagem" placeholder="Digite aqui sua mensagem..."></textarea>
+                        <div class="invalid-feedback">
+                            Este campo deve ser informado.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" name="notificacao" id="notificacao" value="Sim">
+                        <label for="notificacao" class="form-check-label">Desejo receber novidades e promoções da loja por e-mail.</label>
+                    </div>
+                </div>
+
+                <div align="center">
+                    <button type="submit" class="btn btn-dark float-center" id="btn-msg">Enviar Mensagem</button>
+                </div>
+            </div>
+        </div>
+   </div>
+
+   <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-delay="5000" style="position: fixed; top: 1rem; right: 1rem;">
+       <div class="toast-header">
+            <strong class="mr-auto">Mensagem Enviada!</strong>
+            <small>Agora</small>
+            <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="toast-body">
+            Sua mensagem foi enviada com sucesso. Em breve retornaremos pelo e-mail indicado no formulário.
+        </div>
+    </div>
+
+{% endblock %}

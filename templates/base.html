@@ -1,0 +1,98 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+   <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link rel="stylesheet" href="{% static 'css/all.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+   <title>The Cat Store</title>
+</head>
+
+<body>
+   <nav class="navbar navbar-dark background-black navbar-expand-md">
+      <div class="container">
+         <a class="navbar-brand" href="{% url 'home' %}"><img src="{% static 'images/kittylogo.png' %}" style="width: 100px;" alt="Logo"></a>
+         <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#menu" aria-controls="menu" aria-expanded="false" aria-label="Botão de navegação">
+            <span class="navbar-toggler-icon"></span>
+         </button>
+         <div class="collapse navbar-collapse" id="menu">
+            <div class="navbar-nav mr-auto">
+               <font size="6"><a class="nav-link nav-item text-white" href="{% url 'home' %}">The Cat Store</a></font>
+            </div>
+			 <div class="navbar-nav">
+                 <form action="{% url 'pesquisa-produtos' %}" method ='GET' class="form-inline">
+                     <button type="submit" style="border: none; background: none; color: white;"><i class="fa fa-search"></i></button>
+                     {{ form.busca_por }}
+                 </form>
+
+                 {% if user.is_authenticated %}
+                    <a class="nav-link nav-item text-white" href="{% url 'carrinho' %}"><i class="fas fa-shopping-cart"></i></a>
+                    <a class="nav-link nav-item text-white" href="{% url 'logout' %}"><i class="fas fa-sign-out-alt"></i></a>
+                    <a class="nav-link nav-item text-white" href="{% url 'adm-produtos' %}"><i class="fas fa-cog"></i></a>
+                 {% else %}
+                    <a class="nav-link nav-item text-white" href="{% url 'login' %}"><i class="fas fa-user-alt"></i></a>
+                 {% endif %}
+             </div>
+         </div>
+      </div>
+   </nav>
+
+   <div class="d-flex justify-content-center background-black">
+       <div class="p-2"><a class="text-white" href="{% url 'todosgatos' %}">Todos Gatos</a></div>
+       <div class="p-2"><a class="text-white" href="{% url 'todosprodutos' %}">Todos Produtos</a></div>
+       {% for categoria in categorias %}
+            <div class="p-2"><a class="text-white" href="{{ categoria.get_absolute_path }}">{{ categoria.nome }}</a></div>
+       {% endfor %}
+   </div>
+
+    {% block content %}
+    {% endblock %}
+
+   <footer class="footer background-black" >
+      <div class="container" >
+         <div class="row">
+            <div class="col-md-3 col-sm-6 mr-auto">
+               <h6>Pague com</h6>
+                <div style="font-size: 1.75rem;">
+                    <i class="fab fa-cc-visa"></i>
+                    <i class="fab fa-cc-mastercard"></i>
+                    <i class="fab fa-cc-paypal"></i>
+                    <i class="fab fa-cc-apple-pay"></i>
+                    <i class="fab fa-cc-diners-club"></i>
+                    <i class="fas fa-barcode"></i>
+                </div>
+                <h6>Site Seguro <i class="fas fa-shield-alt"></i></h6>
+            </div>
+             <div class="col-md-3 col-sm-6 text-right">
+                 <h4><a style="text-decoration: none; color: #FFFFFF;" href="index.html">The Cat Store</a></h4>
+                 <ul style="list-style: none; margin: 0px; padding: 0px;">
+                     <li><a style="text-decoration: none; color: #FFFFFF;" href="{% url 'quemsomos' %}"><i class="fas fa-cat"></i> Quem Somos</a></li>
+                     <li><a style="text-decoration: none; color: #FFFFFF;" href="{% url 'quemsomos' %}"><i class="fas fa-paw"></i> Nossos Parceiros</a></li>
+                     <li><a style="text-decoration: none; color: #FFFFFF;" href="{% url 'quemsomos' %}"><i class="fas fa-envelope"></i> Fale Conosco</a></li>
+                 </ul>
+            </div>
+         </div>
+      </div>
+   </footer>
+
+   <script src="{% static 'js/jquery-3.3.1.js' %}"></script>
+   <script src="{% static 'js/popper.js' %}"></script>
+   <script src="{% static 'js/bootstrap.js' %}"></script>
+   <script src="{% static 'js/bootstrap.min.js' %}"></script>
+   <script src="{% static 'js/script.js' %}"></script>
+   <script>
+        $(document).ready(function(){
+            {% block domready %}
+
+            {% endblock %}
+        });
+   </script>
+</body>
+
+</html>

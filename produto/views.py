@@ -147,6 +147,7 @@ def edita_produto(request, id):
     produto_form.fields['produto_id'].initial = id
     return render(request, 'administracao/criar-produto.html', {'form': produto_form})
 
+
 @login_required
 def remove_produto(request, id):
     produto = get_object_or_404(Produto, id=id)
